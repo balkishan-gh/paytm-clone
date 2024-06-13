@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "User" ALTER COLUMN "hashedPassword" DROP DEFAULT,
+ALTER COLUMN "number" DROP DEFAULT;
