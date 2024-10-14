@@ -182,17 +182,23 @@ function page() {
           <div className="pt-4">
             <Button
               onClick={async () => {
-                const response = await axios.post(
-                  "http://localhost:5000/api/v1/user/signup",
-                  {
-                    username,
-                    firstName,
-                    lastName,
-                    password,
-                  }
-                );
-                localStorage.setItem("token", response.data.token);
-                router.push("/dash");
+                try {
+                  const response = await axios.post(
+                    "http://localhost:5000/api/v1/user/signup",
+                    {
+                      username,
+                      firstName,
+                      lastName,
+                      password,
+                    }
+                  );
+                  localStorage.setItem("token", response.data.token);
+                  localStorage.setItem("userId", response.data.userId);
+                  router.push("/dash");
+                  alert("Signed up successfully...");
+                } catch (error) {
+                  console.log(error);
+                }
               }}
               label={"Sign up"}
             />

@@ -22,6 +22,9 @@ const Dashboard = () => {
       })
       .then((res) => {
         setBalance(res.data.balance);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   });
   return (

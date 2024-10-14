@@ -39,19 +39,24 @@ const Signin = () => {
           <div className="pt-4">
             <Button
               onClick={async () => {
-                const response = await axios.post(
-                  "http://localhost:5000/api/v1/user/signin",
-                  {
-                    username,
-                    password,
-                  }
-                );
-                // console.log("Line no. 50");
-                // userId.userId = response.data.userId;
-                // console.log(UserId.getInstance().userId);
-                // UserId.getInstance().userId = response.data.userId;
-                localStorage.setItem('userId', response.data.userId);
-                router.push("/dash");
+                try {
+                  const response = await axios.post(
+                    "http://localhost:5000/api/v1/user/signin",
+                    {
+                      username,
+                      password,
+                    }
+                  );
+                  // console.log("Line no. 50");
+                  // userId.userId = response.data.userId;
+                  // console.log(UserId.getInstance().userId);
+                  // UserId.getInstance().userId = response.data.userId;
+                  localStorage.setItem("userId", response.data.userId);
+                  router.push("/dash");
+                  alert("Signed in successfully...");
+                } catch (error) {
+                  console.log(error);
+                }
               }}
               label={"Sign in"}
             />
