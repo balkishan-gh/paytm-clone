@@ -9,6 +9,7 @@ import UserId from "../classes/userId";
 
 const Dashboard = () => {
   const [balance, setBalance] = useState();
+  const [firstLetter, setFirstLetter] = useState();
   // const userId = useUserId();
   // console.log(userId.userId);
 
@@ -26,10 +27,25 @@ const Dashboard = () => {
       .catch((error) => {
         console.log(error);
       });
-  });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .post("http://localhost:5000/api/v1/user/find-user", {
+        userId: localStorage.getItem("userId"),
+      })
+      .then((res) => {
+        console.log("Line no. 38");
+        console.log(res.data);
+        setFirstLetter(res.data.firstName[0]);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <div>
-      <Appbar />
+      <Appbar firstLetter={firstLetter} />
       <div className="m-8">
         <Balance value={balance} />
         <Users />
