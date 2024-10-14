@@ -53,7 +53,7 @@ function User({ user }) {
         </div>
         <div className="flex flex-col justify-center h-ful">
           <div>
-            {user.firstName} {user.lastName}
+            {`${user.firstName} ${user.lastName[0]}.`}
           </div>
         </div>
       </div>
