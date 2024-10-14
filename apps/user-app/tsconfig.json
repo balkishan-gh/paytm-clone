@@ -12,7 +12,10 @@
     "next.config.js",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "app/(auth)/signup/page.jsx",
+    "app/(auth)/signin/page.jsx",
+    "app/send/[...user]/page.jsx"
   ],
   "exclude": ["node_modules"]
 }
